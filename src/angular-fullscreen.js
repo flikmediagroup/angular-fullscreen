@@ -5,9 +5,6 @@
       module.factory('Fullscreen', ['$document', '$rootScope', function ($document,$rootScope) {
          var document = $document[0];
 
-         // ensure ALLOW_KEYBOARD_INPUT is available and enabled
-         var isKeyboardAvailbleOnFullScreen = (typeof Element !== 'undefined' && 'ALLOW_KEYBOARD_INPUT' in Element) && Element.ALLOW_KEYBOARD_INPUT;
-
          var emitter = $rootScope.$new();
 
          // listen event on document instead of element to avoid firefox limitation
@@ -31,7 +28,7 @@
                   if (/Version\/[\d]{1,2}(\.[\d]{1,2}){1}(\.(\d){1,2}){0,1} Safari/.test(navigator.userAgent)) {
                      element.webkitRequestFullscreen();
                   } else {
-                     element.webkitRequestFullscreen(isKeyboardAvailbleOnFullScreen);
+                     element.webkitRequestFullscreen();
                   }
                } else if (element.msRequestFullscreen) {
                   element.msRequestFullscreen();
